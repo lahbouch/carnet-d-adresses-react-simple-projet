@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import GestionDeContacts from './components/GestionDeContacts';
+import { Route, Routes } from "react-router-dom";
+import AjouterContact from './components/AjouterContact'
+import UpdateContact from './components/updateContact'
+import GlobalContextProvider from './contexts/GlobalContext'
+import './App.css'
+
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GlobalContextProvider>
+        <Routes>
+          <Route path="/" element={<GestionDeContacts />} />
+          <Route path="/ajouter" element={<AjouterContact />} />
+          <Route path="/modifier/:id" element={<UpdateContact />} />
+        </Routes>
+      </GlobalContextProvider>
     </div>
   );
 }
